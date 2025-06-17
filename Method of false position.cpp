@@ -13,7 +13,7 @@ void falsi_pos(double a,double b,double tolerance,int maxit){
         c = (a*fun(b)-b*fun(a))/(fun(b)-fun(a));
         cout<<"|Iteration: "<<i<<" |c= "<<c<<" |F(c) = " <<fun(c)<<endl;
         if(fabs(fun(c))<tolerance){
-            cout<<"|Root found at: "<<fun(c)<<" |Iterations: "<<i<<"| c= "<<c<<endl;
+            cout<<"|Root found at: "<<fun(c)<<" |Iterations: "<<i<<endl;
             return;
 
         }if(fun(c)>0){
