@@ -6,39 +6,27 @@
 #include<bits/stdc++.h>
 using namespace std;
 double f(double x){
-    return x*x -4;
+    return x*x*x - 2*x*x-2;
 }
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    double x1=0;
-    double xu=3;
-    double xr =0;
-    double xr_old;
+    double xl=1,xu=4,xr,xr_old;
+    xr = 0;
+    int it=0,maxit=20;
     double Ea = 100.0;
-    double Es = 10.0;
-    int Imax = 100;
-    int iter = 0;
-    while(Ea>Es && iter<Imax)
-    {
+    double Es = 0.001;
+    while(it<maxit && Ea>Es){
         xr_old = xr;
-        xr = (x1+xu)/2.0;
-        iter++;
-        if(xr!=0){
-            Ea = fabs((xr-xr_old)/xr)*100.0;
-        }
-        double test = f(x1)*f(xu);
+        xr = (xl + xu)/2.0;
+        Ea = fabs((xr-xr_old)/xr)*100.0;
+        double test = f(xl)*f(xr);
         if(test<0){
             xu = xr;
         }else if(test>0){
-            x1=xr;
-        }else{
-            Ea = 0;
+            xl = xr;
         }
-        cout<<"Iter"<<iter<<": Xr = "<<xr<<", Ea = "<<Ea<<"%"<<endl;
+        it++;
+        cout<<"Root: "<<xr<<" it: "<<it<<" Ea: "<<Ea<<endl;
     }
-    cout<<"Approximate Roor = "<<xr<<endl;
     return 0;
-
 }
